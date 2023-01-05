@@ -13,8 +13,11 @@ namespace coreSchool
         {
             var escuela = new Escuela("Platzi Academic", 2012);
             escuela.Pais = "Colombia";
-            escuela.Ciudad = "Bogota"; 
+            escuela.Ciudad = "Bogota";
+            escuela.TipoEscuela = TiposEscuela.Preescolar;
 
+            Console.WriteLine(escuela);
+            
             Console.WriteLine(escuela.Nombre + " " + escuela.AñoDeCreacion);
         }
     }

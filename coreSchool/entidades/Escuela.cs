@@ -16,10 +16,16 @@ namespace coreSchool.entidades
 
         public string Ciudad { get; set; }
 
+        public TiposEscuela TipoEscuela { get; set; }
         public Escuela(string nombre, int añoDeCreacion)
         {
             Nombre = nombre;
             AñoDeCreacion = añoDeCreacion;
+        }
+
+        public override string ToString()
+        {
+            return $"Nombre : {Nombre}, Tipo: {TipoEscuela},  Pais: {Pais}, Ciudad: {Ciudad}";
         }
     }
 }
