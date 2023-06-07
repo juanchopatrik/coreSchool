@@ -13,23 +13,23 @@ namespace coreSchool.App
 
         public Escuela escuela { get; set; }
 
+        public EscuelaEngine()
+        {
+        }
+
 
         public void Inicializar()
         {
-            var escuela = new Escuela("Platzi Academic", 2012);
+            escuela = new Escuela("Platzi Academic", 2012);
             escuela.Pais = "Colombia";
             escuela.Ciudad = "Bogota";
 
-            CargarCursos(escuela);
+            CargarCursos();
 
-            CargarAsignaturas(escuela);
+            CargarAsignaturas();
 
-        }
+            CargarEvaluaciones();
 
-        private float NotaAleatoria()
-        {
-            Random rnd = new Random();
-            return (float)rnd.NextDouble() * 5;
         }
 
         public List<Evaluacion> CreacionEvaluaciones()
@@ -48,10 +48,9 @@ namespace coreSchool.App
             return evaluationList;
         }
 
-
-        private void CargarAsignaturas(Escuela pEscuela)
+        private void CargarAsignaturas()
         {
-            foreach (var curso in pEscuela.Cursos)
+            foreach (var curso in escuela.Cursos)
             {
                 List<Asignatura> listaAsignatura = new List<Asignatura>()
                 {
@@ -78,9 +77,9 @@ namespace coreSchool.App
             return listaAlumnos.OrderBy(alum => alum.UniqueId).Take(pCantidad).ToList();
         }
 
-        private void CargarCursos(Escuela pEscuela)
+        private void CargarCursos()
         {
-            pEscuela.Cursos = new List<Curso>()
+            escuela.Cursos = new List<Curso>()
             {
                 new Curso() {Nombre = "101", Jornada = TiposJornada.Mañana},
                 new Curso() {Nombre = "201", Jornada = TiposJornada.Mañana},
@@ -91,11 +90,37 @@ namespace coreSchool.App
 
             Random rnd = new Random();
 
-            foreach (var c in pEscuela.Cursos)
+            foreach (var c in escuela.Cursos)
             {
                 int pCantidadRamdom = rnd.Next(5, 20);
                 c.Alumnos = GenerarAlumnosAlzar(pCantidadRamdom);
             }
+        }
+
+        private void CargarEvaluaciones()
+        {
+            foreach (var curso in escuela.Cursos)
+            {
+                foreach (var alumno in curso.Alumnos)
+                {
+                    foreach (var asignatura in curso.Asignaturas)
+                    {
+                        var rnd = new Random(System.Environment.TickCount);
+                        for (int i = 0; i < 5; i++)
+                        {
+                            var ev = new Evaluacion()
+                            {
+                                Asignatura = asignatura,
+                                Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
+                                Nota = (float)(5 * rnd.NextDouble()),
+                                Alumno = alumno,
+                            };
+                            alumno.evaluaciones.Add(ev);
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

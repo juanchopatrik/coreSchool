@@ -18,21 +18,7 @@ namespace coreSchool
             
             engine.Inicializar();
 
-            //escuela.Cursos = NuevaLista;
-
-            //NuevaLista.AddRange(otraColeccion);
-
-            //NuevaLista.RemoveAll(cur => cur.Nombre.Equals("501")
-            //    && cur.Jornada == TiposJornada.Mañana
-            //);
-            engine.CreacionEvaluaciones();
-
             ImprimirCursos(engine.escuela);
-        }
-
-        private static bool econtrar(Curso obj)
-        {
-            return obj.Nombre == "301";
         }
 
         private static void ImprimirCursos(Escuela escuela)

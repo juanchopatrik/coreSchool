@@ -6,18 +6,8 @@ using System.Threading.Tasks;
 
 namespace coreSchool.entidades
 {
-    public class Escuela
+    public class Escuela : ObjetoEscuelaBase
     {
-        string nombre;
-
-        public string UniqueId { get; set; }  
-            = Guid.NewGuid().ToString();
-
-        public string Nombre
-        {
-            get { return "Copia: " + nombre; }
-            set { nombre = value.ToUpper(); }
-        }
 
         public string Pais { get; set; }
 
