@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace coreSchool.entidades
 {
-    public class ObjetoEscuelaBase
+    public abstract class ObjetoEscuelaBase
     {
         public string UniqueId { get; private  set; }
 
@@ -15,6 +15,11 @@ namespace coreSchool.entidades
         public ObjetoEscuelaBase()
         {
             UniqueId = Guid.NewGuid().ToString(); 
+        }
+
+        public override string ToString()
+        {
+            return $"{Nombre},{UniqueId}";
         }
     }
 }

@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace coreSchool.App
 {
-    public class EscuelaEngine
+    public sealed class EscuelaEngine
     {
 
         public Escuela escuela { get; set; }
@@ -30,6 +31,27 @@ namespace coreSchool.App
 
             CargarEvaluaciones();
 
+        }
+
+        public List<ObjetoEscuelaBase> GetObjetoEscuelas()
+        {
+            var listaObj = new List<ObjetoEscuelaBase>();
+            listaObj.Add(escuela);
+            listaObj.AddRange(escuela.Cursos);
+
+            escuela.Cursos.ForEach(curso =>
+            {
+                listaObj.AddRange(curso.Asignaturas);
+
+                listaObj.AddRange(curso.Alumnos);
+
+                curso.Alumnos.ForEach(alumno =>
+                {
+                    listaObj.AddRange(alumno.evaluaciones);
+                });
+            });
+
+            return listaObj;
         }
 
         public List<Evaluacion> CreacionEvaluaciones()

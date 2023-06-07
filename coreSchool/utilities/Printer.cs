@@ -9,7 +9,7 @@ namespace coreSchool.utilities
     public static class Printer
     {
 
-        public static void DibujarLinea(int pTam = 10)
+        public static void DrawLine(int pTam = 10)
         {
             string linea = "".PadLeft(pTam, '=');
             Console.WriteLine(linea);
@@ -18,9 +18,9 @@ namespace coreSchool.utilities
         public static void WriteTitle(string title)
         {
             var tamaño = title.Length + 4;
-            DibujarLinea(tamaño);
+            DrawLine(tamaño);
             Console.WriteLine($"| {title} |");
-            DibujarLinea(tamaño);
+            DrawLine(tamaño);
         }
     }
 }

@@ -19,6 +19,15 @@ namespace coreSchool
             engine.Inicializar();
 
             ImprimirCursos(engine.escuela);
+
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.WriteTitle("Pruebas poliformismo");
+
+            var alumntoTest = new Alumno { Nombre = "Claire Underwood"};
+
+            ObjetoEscuelaBase ob = alumntoTest;
         }
 
         private static void ImprimirCursos(Escuela escuela)
