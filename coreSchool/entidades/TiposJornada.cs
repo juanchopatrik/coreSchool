@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace coreSchool.entidades
 {
-    public enum TiposEscuela
+    public enum TiposJornada
     {
-       Primaria,
-       
-       Secundaria,
+        Mañana, 
+        Tarde,
+        Noche
 
-       Preescolar
     }
 }

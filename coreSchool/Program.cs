@@ -1,9 +1,12 @@
-﻿using coreSchool.entidades;
+﻿using coreSchool.App;
+using coreSchool.entidades;
+using coreSchool.utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace coreSchool
 {
@@ -11,14 +14,38 @@ namespace coreSchool
     {
         static void Main(string[] args)
         {
-            var escuela = new Escuela("Platzi Academic", 2012);
-            escuela.Pais = "Colombia";
-            escuela.Ciudad = "Bogota";
-            escuela.TipoEscuela = TiposEscuela.Preescolar;
-
-            Console.WriteLine(escuela);
+            var engine = new EscuelaEngine();
             
-            Console.WriteLine(escuela.Nombre + " " + escuela.AñoDeCreacion);
+            engine.Inicializar();
+
+            //escuela.Cursos = NuevaLista;
+
+            //NuevaLista.AddRange(otraColeccion);
+
+            //NuevaLista.RemoveAll(cur => cur.Nombre.Equals("501")
+            //    && cur.Jornada == TiposJornada.Mañana
+            //);
+            engine.CreacionEvaluaciones();
+
+            ImprimirCursos(engine.escuela);
+        }
+
+        private static bool econtrar(Curso obj)
+        {
+            return obj.Nombre == "301";
+        }
+
+        private static void ImprimirCursos(Escuela escuela)
+        {
+            Printer.WriteTitle("Cursos de la Escuala");
+            
+            if (escuela?.Cursos != null)
+            {
+                foreach (var curso in escuela.Cursos)
+                {
+                    WriteLine($"Nombre {curso.Nombre}, id {curso.UniqueId}");
+                }
+            }
         }
     }
 }

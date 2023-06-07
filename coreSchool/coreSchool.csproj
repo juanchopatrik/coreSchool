@@ -43,10 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\EscuelaEngine.cs" />
+    <Compile Include="entidades\Evaluaciones.cs" />
+    <Compile Include="entidades\Asignatura.cs" />
+    <Compile Include="entidades\Alumno.cs" />
+    <Compile Include="entidades\Curso.cs" />
     <Compile Include="entidades\Escuela.cs" />
     <Compile Include="entidades\TiposEscuela.cs" />
+    <Compile Include="entidades\TiposJornada.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utilities\Printer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
