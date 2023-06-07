@@ -54,6 +54,8 @@ namespace coreSchool.App
             return listaObj;
         }
 
+        #region Metodos de Carga
+
         public List<Evaluacion> CreacionEvaluaciones()
         {
             var evaluationList =   new List<Evaluacion>()
@@ -144,5 +146,7 @@ namespace coreSchool.App
             }
 
         }
+
+        #endregion
     }
 }

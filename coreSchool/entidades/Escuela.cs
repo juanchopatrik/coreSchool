@@ -1,4 +1,5 @@
-﻿using System;
+﻿using coreSchool.utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace coreSchool.entidades
 {
-    public class Escuela : ObjetoEscuelaBase
+    public class Escuela : ObjetoEscuelaBase, ILugar
     {
 
         public string Pais { get; set; }
@@ -18,6 +19,7 @@ namespace coreSchool.entidades
         public TiposEscuela TipoEscuela { get; set; }
 
         public List<Curso> Cursos { get; set; }
+        public string Direccion { get; set; }
 
         public Escuela(string nombre
             , int añoDeCreacion
@@ -37,6 +39,14 @@ namespace coreSchool.entidades
             return $"Nombre : {Nombre}, Tipo: {TipoEscuela}" +
                 $", {System.Environment.NewLine} Pais: {Pais}" +
                 $", Ciudad: {Ciudad}";
+        }
+
+        public void LimpiarLugar()
+        {
+            Printer.DrawLine();
+            Console.WriteLine("Limpiando Escuela");
+            Cursos.ForEach(curso => curso.LimpiarLugar());
+            Printer.WriteTitle($"Escuela {Nombre} Limpia");
         }
     }
 }

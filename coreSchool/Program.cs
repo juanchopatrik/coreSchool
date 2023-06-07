@@ -15,19 +15,17 @@ namespace coreSchool
         static void Main(string[] args)
         {
             var engine = new EscuelaEngine();
-            
+
             engine.Inicializar();
 
             ImprimirCursos(engine.escuela);
 
-            Printer.DrawLine(20);
-            Printer.DrawLine(20);
-            Printer.DrawLine(20);
-            Printer.WriteTitle("Pruebas poliformismo");
+            var listaObjetos = engine.GetObjetoEscuelas();
 
-            var alumntoTest = new Alumno { Nombre = "Claire Underwood"};
+            //engine.escuela.LimpiarLugar();
 
-            ObjetoEscuelaBase ob = alumntoTest;
+            var listaILugar = listaObjetos.OfType<ILugar>().ToList();
+
         }
 
         private static void ImprimirCursos(Escuela escuela)
