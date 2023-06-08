@@ -20,12 +20,9 @@ namespace coreSchool
 
             ImprimirCursos(engine.escuela);
 
-            var listaObjetos = engine.GetObjetoEscuelas();
+            var dictmp = engine.GetDiccionarioObjetos();
 
-            //engine.escuela.LimpiarLugar();
-
-            var listaILugar = listaObjetos.OfType<ILugar>().ToList();
-
+            engine.ImprimirDiccionario(dictmp, true);
         }
 
         private static void ImprimirCursos(Escuela escuela)
